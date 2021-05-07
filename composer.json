@@ -1,0 +1,20 @@
+{
+  "name": "tsvadim/crowdcounting",
+  "description": "Crowd Counting test app",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Vadim Ts",
+      "email": "seesoon@tsvadim.dev"
+    }
+  ],
+  "require": {
+    "php": "~7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "tsv\\": "app/"
+    }
+  }
+}
