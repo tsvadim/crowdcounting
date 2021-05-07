@@ -1,0 +1,27 @@
+version: '3.2'
+services:
+  webserver:
+    build: ./docker/php-74-apache-xdebug-30
+    ports:
+      - "2080:80"
+    volumes:
+      - .:/var/www/
+      - ./web:/var/www/html
+    environment:
+      #change the line below with your IP address
+      XDEBUG_CONFIG: remote_host=192.168.1.60
+  mysql:
+      build: ./docker/mysql
+      ports:
+        - "33306:3306"
+      volumes:
+        - ./data:/var/lib/mysql
+  redis:
+    image: redis
+    volumes:
+      - type: bind
+        source: ./docker/redis-data/redis.conf
+        target: /usr/local/etc/redis/redis.conf
+    ports:
+      - 6379:6379
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
